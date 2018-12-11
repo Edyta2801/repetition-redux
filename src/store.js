@@ -1,10 +1,10 @@
-mport { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
 const INITIAL_STATE = {
   firstAction: false
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const firstActionReducer = (state = INITIAL_STATE, action) => {
   if (action.type === 'FIRST_ACTION') {
     return {
       ...state,
@@ -13,6 +13,13 @@ const reducer = (state = INITIAL_STATE, action) => {
   }
   return state // by default returns prev state
 }
+
+const counterReducer = (state, action) => ({ counter: 0 })
+ 
+const reducer = combineReducers({
+  firstActionReducerName: firstActionReducer,
+  counterReducerName: counterReducer
+})
 
 const store = createStore(
   reducer,
@@ -25,4 +32,4 @@ const firstAction = () => ({
   type: FIRST_ACTION
 })
 
-window.dispatchFirstAction = () =>  store.dispatch(firstAction())
+window.dispatchFirstAction = () => store.dispatch(firstAction())
