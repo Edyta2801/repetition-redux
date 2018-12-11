@@ -17,7 +17,7 @@ const reducer = (state = INITIAL_STATE, action) => {
 }
 
 
-
+window.dispatchFirstAction=()=>store.dispatch({type: 'FIRST_ACTION'})
 
 
 
@@ -28,10 +28,3 @@ export const store = createStore(
 )
 
 
-store.dispatch({
-    type: 'FIRST_ACTION'
-})
-
-store.dispatch({
-    type: 'FIRST_ACTION'
-})
